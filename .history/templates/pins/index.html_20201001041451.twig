@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Find all pins {% endblock %}
+
+{% block body %}
+    <h1>ALL PINS</h1>
+    {% for pin in pins %}
+    
+        <article>
+            <h1>{{pin.title}}</h1>
+            <p>>{{pin.description }}</p>
+        </article>
+    {% endfor %}
+{% endblock %}
