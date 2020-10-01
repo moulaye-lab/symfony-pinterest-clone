@@ -29,14 +29,9 @@ class Pin
     private $description;
 
     /**
-     * @ORM\Column(type="datetime", options={"default" : "CURRENT_TIMESTAMP"} )
+     * @ORM\Column(type="datetime")
      */
     private $createdAt;
-
-    /**
-     * @ORM\Column(type="datetime", options={"default" : "CURRENT_TIMESTAMP"}  )
-     */
-    private $updatedAt;
 
     public function getId(): ?int
     {
@@ -91,21 +86,9 @@ class Pin
             $this->setCreatedAt(new \DateTimeImmutable);
 
         }
-        $this->setUpdatedAt(new \DateTimeImmutable);
+        $this->setUpdateddAt(new \DateTimeImmutable);
 
 
-    }
-
-    public function getUpdatedAt(): ?\DateTimeInterface
-    {
-        return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
     }
 
 

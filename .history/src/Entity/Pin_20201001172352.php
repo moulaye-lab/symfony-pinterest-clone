@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=PinRepository::class)
- * @ORM\HasLifecycleCallbacks
  */
 class Pin
 {
@@ -29,14 +28,9 @@ class Pin
     private $description;
 
     /**
-     * @ORM\Column(type="datetime", options={"default" : "CURRENT_TIMESTAMP"} )
+     * @ORM\Column(type="datetime")
      */
     private $createdAt;
-
-    /**
-     * @ORM\Column(type="datetime", options={"default" : "CURRENT_TIMESTAMP"}  )
-     */
-    private $updatedAt;
 
     public function getId(): ?int
     {
@@ -78,39 +72,4 @@ class Pin
 
         return $this;
     }
-    
-    /**
-     * updateTimestamps
-     *
-     * @ORM\PrePersist
-     * @ORM\PreUpdate
-     */
-    public function updateTimestamps()
-    {
-        if($this->getCreatedAt===null){
-            $this->setCreatedAt(new \DateTimeImmutable);
-
-        }
-        $this->setUpdatedAt(new \DateTimeImmutable);
-
-
-    }
-
-    public function getUpdatedAt(): ?\DateTimeInterface
-    {
-        return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-
-
 }
-
-
-

@@ -29,12 +29,12 @@ class Pin
     private $description;
 
     /**
-     * @ORM\Column(type="datetime", options={"default" : "CURRENT_TIMESTAMP"} )
+     * @ORM\Column(type="datetime", options=() )
      */
     private $createdAt;
 
     /**
-     * @ORM\Column(type="datetime", options={"default" : "CURRENT_TIMESTAMP"}  )
+     * @ORM\Column(type="datetime" )
      */
     private $updatedAt;
 
