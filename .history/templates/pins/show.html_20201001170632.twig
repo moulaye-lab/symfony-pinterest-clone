@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Find all pins {% endblock %}
+{% block title %} {{pin.title}} {% endblock %}
 
 {% block body %}
-    <h1> {{ pluralize (pins | length, 'Pin', 'Pins') }} </h1>
+    <h1> {{ pin.tiltle }} </h1>
     
     {% for pin in pins %}
     

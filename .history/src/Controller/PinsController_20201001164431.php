@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Pin;
 use App\Repository\PinRepository;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -33,8 +32,8 @@ class PinsController extends AbstractController
         
 
 
-        return $this->render('pins/show.html.twig', [
-            'pin' => $pin
+        return $this->render('pins/index.html.twig', [
+            'pins' => $pins
         ]);
     }
 }

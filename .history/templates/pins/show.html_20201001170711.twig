@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{pin.title}} {% endblock %}
+
+{% block body %}
+    
+    {% for pin in pin %}
+    
+        <article>
+            <h1>{{pin.title}}</a></h1>
+            <p>{{pin.description }}</p>
+        </article>
+    {% endfor %}
+{% endblock %}

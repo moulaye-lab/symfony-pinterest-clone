@@ -34,7 +34,7 @@ class PinsController extends AbstractController
 
 
         return $this->render('pins/show.html.twig', [
-            'pin' => $pin
+            'pins' => $pins
         ]);
     }
 }
