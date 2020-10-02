@@ -43,7 +43,7 @@ class PinsController extends AbstractController
 
     /**
      * 
-     *@Route("/pins/{id<[0-9]+>}/edit",name="app_pin_edit",methods={"GET","POST"})
+     *@Route("/pins/{id<[0-9]+>}/edit",name="app_pin_edit",methods={"GET","PUT"}")
      *@Route("/pins/create", name="app_pin_create", methods="POST" )  // {id<[0-9]+>} signifie que le id doit etre un nombre
      */
 

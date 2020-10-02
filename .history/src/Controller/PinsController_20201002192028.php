@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class PinsController extends AbstractController
 {
     /**
-     * @Route("/", name="app_home", methods="GET")
+     * @Route("/", name="app_home")
      */
     public function index(PinRepository $pinRepository)
     {
@@ -29,7 +29,7 @@ class PinsController extends AbstractController
     /**
      * show
      *
-     * @Route("/pins/{id<[0-9]+>}", name="app_pin_show" ,methods="GET")  // {id<[0-9]+>} signifie que le id doit etre un nombre
+     * @Route("/pins/{id<[0-9]+>}", name="app_pin_show" )  // {id<[0-9]+>} signifie que le id doit etre un nombre
      */
     public function show(Pin $pin) : Response
     {
@@ -43,37 +43,29 @@ class PinsController extends AbstractController
 
     /**
      * 
-     *@Route("/pins/{id<[0-9]+>}/edit",name="app_pin_edit",methods={"GET","POST"})
-     *@Route("/pins/create", name="app_pin_create", methods="POST" )  // {id<[0-9]+>} signifie que le id doit etre un nombre
+     *
+     * @Route("/pins/create", name="app_pin_create" )  // {id<[0-9]+>} signifie que le id doit etre un nombre
      */
-
-    public function create(Pin $pin = null ,Request $request,EntityManagerInterface $manager) : Response
+    public function create(Request $request,EntityManagerInterface $manager) : Response
     {
-        if (!$pin) {
-         $pin=new Pin;
-        }
-        $form=$this->createForm(CreatePinType::class,$pin)
+        $pins=new Pin;
+        $form=$this->createForm(CreatePinType::class,$pins)
         ;
         $form->handleRequest($request);
         
-        if($form->isSubmitted() && $form->isValid()){
+        if($form->isSubmitted && $form->isValid){
 
-            $manager->persist($pin);
+            $manager->persist($pins);
             $manager->flush();
 
-         if ($pin->getId()==null) {
-            return $this->redirectToRoute('app_home');   
-   
-         }else{
-            return $this->redirectToRoute('app_pin_edit',['id' => $pin->getId()]);   
- 
-         }
+         return $this->redirectToRoute('app_home');   
+
 
         }
 
         return $this->render('pins/create_pin.html.twig', [
-            'createPin' => $form->createView(),
-             'editMode' =>$pin->getId() !== null
+            'createPinForm' => $form->createView()
+            
         ]);
     }
 

@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Create Pin{% endblock %}
+
+{% block body %}
+    {{form_start(createPin)}}
+        {{form_row(createPin.title, {'attr' : {'placeholder':'Titre du pins'}}) }}
+        {{form_row(createPin.description, {'attr' : {'placeholder':'Description du pins'}}) }}
+        
+        <button class="btn btn-success"> 
+        {% if editMode %}  
+            Modifier l'ARTICLE
+        {% else %}
+            Ajouter l'ARTICLE
+        {% endif %}
+        </button>
+        
+    {{form_end(createPin)}}
+
+
+{% endblock %}
