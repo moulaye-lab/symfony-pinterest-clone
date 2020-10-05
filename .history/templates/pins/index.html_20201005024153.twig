@@ -10,7 +10,7 @@
         <article>
             <h1><a href="{{ path('app_pin_show', {id:pin.id}) }}">{{pin.title}}</a></h1>
             <p>{{pin.description }}</p>
-            <p>submitted {{pin.createdAt | ago }}</p>
+            <p>{{pin.createdAt | date("${m/d/Y}") }}</p>
 
         </article>
     {% endfor %}

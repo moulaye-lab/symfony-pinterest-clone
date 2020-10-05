@@ -61,15 +61,12 @@ class PinsController extends AbstractController
             $manager->persist($pin);
             $manager->flush();
 
-
-         if ($pin->getId()==null) {
             $this->addFlash('success','Votre Pin a bien été creer');
 
+         if ($pin->getId()==null) {
             return $this->redirectToRoute('app_home');   
    
          }else{
-            $this->addFlash('error','Votre Pin a bien été modifier');
-
             return $this->redirectToRoute('app_pin_edit',['id' => $pin->getId()]);   
  
          }
@@ -95,8 +92,6 @@ class PinsController extends AbstractController
         }
         $manager->remove($pin);
         $manager->flush();
-        
-        $this->addFlash('success','Votre Pin a bien été supprimer');
 
         
         return $this->redirectToRoute('app_home');   

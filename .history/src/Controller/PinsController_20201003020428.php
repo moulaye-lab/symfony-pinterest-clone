@@ -61,15 +61,10 @@ class PinsController extends AbstractController
             $manager->persist($pin);
             $manager->flush();
 
-
          if ($pin->getId()==null) {
-            $this->addFlash('success','Votre Pin a bien été creer');
-
             return $this->redirectToRoute('app_home');   
    
          }else{
-            $this->addFlash('error','Votre Pin a bien été modifier');
-
             return $this->redirectToRoute('app_pin_edit',['id' => $pin->getId()]);   
  
          }
@@ -86,21 +81,16 @@ class PinsController extends AbstractController
     /**
      * delete
      *
-     * @Route("/pins/{id<[0-9]+>}", name="app_pin_delete" ,methods="DELETE")  // {id<[0-9]+>} signifie que le id doit etre un nombre
+     * @Route("/pins/{id<[0-9]+>}", name="app_pin_delete" ,methods="GET")  // {id<[0-9]+>} signifie que le id doit etre un nombre
      */
-    public function delete(Request $request,Pin $pin,EntityManagerInterface $manager) : Response
+    public function delete(Pin $pin,EntityManagerInterface $manager) : Response
     {
-        if ($this->isCsrfTokenValid('pin_deletion_'.$pin->getId(), $request->request->get('csrf_token'))) {
-           
-        }
-        $manager->remove($pin);
-        $manager->flush();
         
-        $this->addFlash('success','Votre Pin a bien été supprimer');
 
-        
-        return $this->redirectToRoute('app_home');   
 
+        return $this->render('pins/delete.html.twig', [
+            'pin' => $pin
+        ]);
     }
 
 }

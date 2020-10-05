@@ -68,7 +68,7 @@ class PinsController extends AbstractController
             return $this->redirectToRoute('app_home');   
    
          }else{
-            $this->addFlash('error','Votre Pin a bien été modifier');
+            $this->addFlash('success','Votre Pin a bien été modifier');
 
             return $this->redirectToRoute('app_pin_edit',['id' => $pin->getId()]);   
  
