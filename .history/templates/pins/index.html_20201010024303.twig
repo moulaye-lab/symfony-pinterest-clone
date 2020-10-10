@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Find all pins {% endblock %}
+
+{% block body %}
+  {% if pins|length > 0 %}
+    <h1> {{ pluralize (pins | length, 'Pin', 'Pins') }} </h1>
+    
+    {% for pin in pins %}
+    
+        <article>
+            <h1><a href="{{ path('app_pin_show', {id:pin.id}) }}">{{pin.title}}</a></h1>
+            <p>{{pin.description }}</p>
+            <p>submitted {{pin.createdAt | ago }}</p>
+   {% else %}
+       <p>Aucun Pin pour l'instant <a href="{{path('app_pin_create')}}">Soyez le premier </a>
+   {% endif %} 
+        </article>
+    {% endfor %}
+{% endblock %}

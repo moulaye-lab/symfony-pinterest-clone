@@ -9,7 +9,8 @@
             {{form_start(createPin)}}
                 {{form_row(createPin.title, {'attr' : {'placeholder':'Titre du pins'}}) }}
                 {{form_row(createPin.description, {'attr' : {'placeholder':'Description du pins'}}) }}
-                
+                {{form_row(createPin.imageFile) }}
+
                 <button class="btn btn-primary btn-block"> 
                 {% if editMode %}  
                     Modifier le pin

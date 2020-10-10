@@ -1,0 +1,42 @@
+@import url("https://bootswatch.com/4/darkly/bootstrap.min.css") ;
+.alert{
+    padding:10px;
+    color:white;
+    text-align: center;
+}
+
+.alert-success {
+    background-color: green;
+
+}
+
+.alert-error {
+    background-color: red;
+
+}
+
+.alert-info {
+    background-color: blue;
+
+}
+
+h1{
+    color:navy;
+}
+
+.vich-image .form-check{
+
+    margin-top:20px;
+}
+
+.vich-image img{
+
+    margin-bottom:  2.em;
+    border-radius: 2px;
+    box-shadow: inset;
+    
+}
+
+.pin img:hover{
+    transform:scale()
+}

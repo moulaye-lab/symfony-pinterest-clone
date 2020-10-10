@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Find all pins {% endblock %}
+
+{% block body %}
+  {% if pins|length > 0 %}
+    <h1 class=" mb-4 mt-5 text-center text-muted "> {{ pluralize (pins | length, 'Pin', 'Pins') }} </h1>
+    
+          {% for row in pins|batch(3) %}
+            <div class='row'>
+          {% for pin in row %}
+              <div class="col-md-4">
+                <article class=" rounded shadow center">
+                  <a href="{{path('app_pin_show', {id:pin.id})}}">  
+                  <img src="{{ (pin.imageName ? vich_uploader_asset(pin,'imageFile') : asset('images/placeholder.jpg')) | imagine_filter('images_small')}}" 
+                   class=" "  alt="{{pin.title}}"/>
+                   </a> 
+                    <h1><a href="{{ path('app_pin_show', {id:pin.id}) }}">{{pin.title}}</a></h1>
+                    <p>{{pin.description }}</p>
+                    <p>submitted {{pin.createdAt | ago }}</p>
+          
+                </article>
+              </div>
+        {% endfor %}
+          </div>
+        {% endfor %}
+  {% else %}
+       <p class="h1 mt-5 text-center">Aucun Pin pour l'instant <a href="{{path('app_pin_create')}}">Soyez le premier </a>
+  {% endif %} 
+{% endblock %}
