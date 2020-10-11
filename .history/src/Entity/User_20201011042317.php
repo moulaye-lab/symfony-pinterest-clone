@@ -70,8 +70,7 @@ class User implements UserInterface
         $this->pins = new ArrayCollection();
     }
 
-    
-    
+
     public function getId(): ?int
     {
         return $this->id;
@@ -245,9 +244,4 @@ class User implements UserInterface
 
         return $this;
     }
-
-   
-    
-
-   
 }
