@@ -15,10 +15,10 @@
                      
                     </div> 
           
-                    <h1 class="h5 pt-2git pl-3 text-secondary text-decration-none "> {{pin.title}}</h1>
+                    <h1 class="h5 pt-2git pl-3 text-secondary text-decration-none " class=""> {{pin.title}}</h1>
                     <p class="pl-3 pb-3">
                     <small>submitted by {{pin.user.fullName}}{{pin.createdAt | ago }}</small></p>
-                    <p class="pl-3 text-break">{{ pin.description}}</p>
+                    <p class="pl-3">{{ pin.description}}</p>
                   <div class="pl-3">
                         <a href ="{{path ('app_home')}}" class="btn btn-primary">Go Back</a>
                         <a href ="#" onclick="event.preventDefault(); confirm('Are you sure ') && document.getElementById('js-pin-delete-form').submit(); " class="btn btn-primary">Delete</a>

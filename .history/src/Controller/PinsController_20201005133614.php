@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Pin;
 use App\Form\CreatePinType;
 use App\Repository\PinRepository;
-use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,7 +48,7 @@ class PinsController extends AbstractController
 
      */
 
-    public function create(Pin $pin = null ,Request $request,EntityManagerInterface $manager,UserRepository $user) : Response
+    public function create(Pin $pin = null ,Request $request,EntityManagerInterface $manager) : Response
     {
         if (!$pin) {
          $pin=new Pin;
@@ -59,8 +58,7 @@ class PinsController extends AbstractController
         $form->handleRequest($request);
         
         if($form->isSubmitted() && $form->isValid()){
-            $janDoe=$user->findOneBy(['firstName' => 'john']);
-            $pin->setUser($janDoe);
+
             $manager->persist($pin);
             $manager->flush();
 

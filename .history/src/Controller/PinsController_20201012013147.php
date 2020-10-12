@@ -60,7 +60,7 @@ class PinsController extends AbstractController
         
         if($form->isSubmitted() && $form->isValid()){
             $janDoe=$user->findOneBy(['firstName' => 'john']);
-            $pin->setUser($janDoe);
+            $pin-setUser($janDoe);
             $manager->persist($pin);
             $manager->flush();
 
